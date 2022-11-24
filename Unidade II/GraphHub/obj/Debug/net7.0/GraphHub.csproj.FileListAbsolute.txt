@@ -1,0 +1,15 @@
+C:\Users\aleck\Documents\Grafos\GraphHub\bin\Debug\net7.0\GraphHub.exe
+C:\Users\aleck\Documents\Grafos\GraphHub\bin\Debug\net7.0\GraphHub.deps.json
+C:\Users\aleck\Documents\Grafos\GraphHub\bin\Debug\net7.0\GraphHub.runtimeconfig.json
+C:\Users\aleck\Documents\Grafos\GraphHub\bin\Debug\net7.0\GraphHub.dll
+C:\Users\aleck\Documents\Grafos\GraphHub\bin\Debug\net7.0\GraphHub.pdb
+C:\Users\aleck\Documents\Grafos\GraphHub\obj\Debug\net7.0\GraphHub.csproj.AssemblyReference.cache
+C:\Users\aleck\Documents\Grafos\GraphHub\obj\Debug\net7.0\GraphHub.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aleck\Documents\Grafos\GraphHub\obj\Debug\net7.0\GraphHub.AssemblyInfoInputs.cache
+C:\Users\aleck\Documents\Grafos\GraphHub\obj\Debug\net7.0\GraphHub.AssemblyInfo.cs
+C:\Users\aleck\Documents\Grafos\GraphHub\obj\Debug\net7.0\GraphHub.csproj.CoreCompileInputs.cache
+C:\Users\aleck\Documents\Grafos\GraphHub\obj\Debug\net7.0\GraphHub.dll
+C:\Users\aleck\Documents\Grafos\GraphHub\obj\Debug\net7.0\refint\GraphHub.dll
+C:\Users\aleck\Documents\Grafos\GraphHub\obj\Debug\net7.0\GraphHub.pdb
+C:\Users\aleck\Documents\Grafos\GraphHub\obj\Debug\net7.0\GraphHub.genruntimeconfig.cache
+C:\Users\aleck\Documents\Grafos\GraphHub\obj\Debug\net7.0\ref\GraphHub.dll
