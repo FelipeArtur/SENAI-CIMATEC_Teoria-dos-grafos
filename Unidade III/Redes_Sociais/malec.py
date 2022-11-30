@@ -28,12 +28,40 @@ def adicionar_conexao():
     """
 
 
-def mostrar_grafo():
-    print("VISUALIZAÇÃO DA REDE EM ...\n\n")
+def mostrar_grafo_circular():
+    print("VISUALIZAÇÃO DA REDE DE FORMA CIRCULAR\n\n")
     ig.plot(
         grafo,
         target=ax,
         layout="circle",
+        vertex_size=0.1,
+        vertex_color="steelblue",
+        vertex_frame_color="white",
+        vertex_label=grafo.vs["name"])
+    plt.show()
+
+
+""""
+def mostrar_grafo_star():
+    print("VISUALIZAÇÃO DA REDE DE FORMA DE ESTRELA\n\n")
+    ig.plot(
+        grafo,
+        target=ax,
+        layout="star",
+        vertex_size=0.1,
+        vertex_color="steelblue",
+        vertex_frame_color="white",
+        vertex_label=grafo.vs["name"])
+    plt.show()
+"""
+
+
+def mostrar_grafo_kamada_kawai():
+    print("VISUALIZAÇÃO DA REDE DE FORMA kamada_kawai\n\n")
+    ig.plot(
+        grafo,
+        target=ax,
+        layout="kamada_kawai",
         vertex_size=0.1,
         vertex_color="steelblue",
         vertex_frame_color="white",
@@ -55,9 +83,9 @@ while True:
     print("1 - Adicionar usuário")
     print("2 - Adicionar conexão")
     print("3 - Propriedades da rede")
-    print("4 - Visualizar")
-    print("5 - Visualizar")
-    print("6 - Visualizar")
+    print("4 - Visualizar circular")
+    print("5 - Visualizar estrela")
+    print("6 - Visualizar kamada_kawai")
     print("7 - Sair")
     response = int(input("Escolha a opção: > "))
 
@@ -67,7 +95,9 @@ while True:
         case 2:
             adicionar_conexao()
         case 4:
-            mostrar_grafo()
+            mostrar_grafo_circular()
+        case 6:
+            mostrar_grafo_kamada_kawai()
         case 7:
             exit = True
         case _:
