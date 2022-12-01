@@ -38,14 +38,18 @@ def adicionar_conexao():
 # Propriedade da rede
 def propriedades_rede():
     clear_system()
+    qnt_vertices = len(grafo.vs)
+    qnt_arestas = len(grafo.es)
+    densidade = (2*qnt_arestas)/((qnt_arestas - 1)*qnt_arestas)
+
     print("=-=-=-REDE KOONFIA-=-=-=")
     print("=-=-=-=-=-=-=-=-=-=-=-=-")
-    print("Ordem: ")
-    print("Tamanho: ")
-    print("Cardinalidade: ")
-    print("Densidade: ")
-    print("Grau: ")
-    print("Centralidade: ")
+    print("Ordem: ", qnt_vertices) # quantidade de vertices
+    print("Tamanho: ", qnt_arestas) # quantidade de arestas
+    print("Densidade: ", densidade) # razão entre o número atual de arestas com o número máximo de arestas (2n/(n-1)*n)
+    print("Grau: ") # quantidade de arestas de um vértice
+    for vtx in grafo.vs:
+        print(vtx["name"], ": ", len(vtx.all_edges()))
 
 # Mostrar grafo
 def mostrar_grafo():
@@ -70,19 +74,19 @@ def mostrar_grafo():
 
 def mostrar_grafo_circular():
     print("VISUALIZAÇÃO DA REDE DE FORMA: CIRCULAR\n\n")
-    ig.plot( grafo, target=ax, layout="circle", vertex_size=0.1, vertex_color="steelblue", vertex_frame_color="white", vertex_label=grafo.vs["name"], edge_label=grafo.es["weight"])
+    ig.plot( grafo, target=ax, layout="circle", vertex_size=0.1, vertex_color="red", vertex_frame_color="white", vertex_label=grafo.vs["name"], edge_label=grafo.es["weight"])
     plt.show()
 
 
 def mostrar_grafo_kamada_kawai():
     print("VISUALIZAÇÃO DA REDE DE FORMA: KAMADA KAWAI\n\n")
-    ig.plot( grafo, target=ax, layout="kamada_kawai", vertex_size=0.1, vertex_color="steelblue", vertex_frame_color="white", vertex_label=grafo.vs["name"], edge_label=grafo.es["weight"])
+    ig.plot( grafo, target=ax, layout="kamada_kawai", vertex_size=0.1, vertex_color="red", vertex_frame_color="white", vertex_label=grafo.vs["name"], edge_label=grafo.es["weight"])
     plt.show()
 
 
 def mostrar_grafo_tree():
     print("VISUALIZAÇÃO DA REDE DE FORMA: TREE\n\n")
-    ig.plot( grafo, target=ax, layout="tree", vertex_size=0.1, vertex_color="steelblue", vertex_frame_color="white", vertex_label=grafo.vs["name"], edge_label=grafo.es["weight"])
+    ig.plot( grafo, target=ax, layout="tree", vertex_size=0.1, vertex_color="red", vertex_frame_color="white", vertex_label=grafo.vs["name"], edge_label=grafo.es["weight"])
     plt.show()
 
 def clear_system():
@@ -110,6 +114,8 @@ while True:
             adicionar_usuario()
         case 2:
             adicionar_conexao()
+        case 3:
+            propriedades_rede()
         case 4:
             mostrar_grafo()
         case 5:
