@@ -2,38 +2,59 @@ import igraph as ig
 import matplotlib.pyplot as plt
 import os
 
-'''Criação do Grafo'''
+# Criação do Grafo
 grafo = ig.Graph()
+grafo = ig.read("Grafo.net")
 grafo['titulo'] = "Koonfia_Social"
 exit = False
 fig, ax = plt.subplots(figsize=(15, 15))
 
-'''Adicionar vértices ao Grafo'''
-
-
+# Adicionar vértices ao Grafo
 def adicionar_usuario():
-    '''Adiciona pessoas sem problema algum,porém o ideal é buscar uma forma de combater a duplicidade de usuários'''
+    # Adiciona pessoas sem problema algum,porém o ideal é buscar uma forma de combater a duplicidade de usuários
+    clear_system()
+    print("=-=-=-REDE KOONFIA-=-=-=")
+    print("=-=-=-=-=-=-=-=-=-=-=-=-")
     print("Insira o nome do usuário")
     username = input("> ")
     grafo.add_vertex(name=username)
-    print("Usuário: "+username+" adicionado!")
+    print("Usuário "+ username +" adicionado!")
 
-
-'''Adicionar arestas ao Grafo'''
-
-
+# Adicionar arestas ao Grafo
 def adicionar_conexao():
-    '''Funciona, porém preciso resolver o loop'''
-    aresta1 = int(input("Insira o ponto de partida: "))
-    aresta2 = int(input("Insira o ponto de chegada : "))
-    grafo.add_edge(aresta1, aresta2)
+    clear_system()
+    print("=-=-=-REDE KOONFIA-=-=-=")
+    print("=-=-=-=-=-=-=-=-=-=-=-=-")
+    count = 0
+    for vtx in grafo.vs:
+        print(count, ' - ', vtx["name"])
+        count = count + 1
+    vertice_orig = int(input("Insira o usuário de origem: >"))
+    vertice_dest = int(input("Insira o usuário de destino: >"))
+    peso = int(input("Insira o peso da conexão: >"))
+    grafo.add_edge( vertice_orig, vertice_dest, weight=peso)
+    print("Conexão "+ grafo.vs[vertice_orig]["name"] + " - " + grafo.vs[vertice_dest]["name"] +" adicionado!")
 
+# Propriedade da rede
+def propriedades_rede():
+    clear_system()
+    print("=-=-=-REDE KOONFIA-=-=-=")
+    print("=-=-=-=-=-=-=-=-=-=-=-=-")
+    print("Ordem: ")
+    print("Tamanho: ")
+    print("Cardinalidade: ")
+    print("Densidade: ")
+    print("Grau: ")
+    print("Centralidade: ")
 
+# Mostrar grafo
 def mostrar_grafo():
-    print("Qual o tipo de visualização você deseja?")
-    print("1 - CIRCULAR")
-    print("2 - KAMADA KAWAI")
-    print("3 - TREE")
+    clear_system()
+    print("=-=-=-REDE KOONFIA-=-=-=")
+    print("=-=-=-=-=-=-=-=-=-=-=-=-")
+    print("1 - Circular")
+    print("2 - Kamada-Kawai")
+    print("3 - Árvore")
     response = int(input("Escolha a opção: > "))
 
     match response:
@@ -49,42 +70,20 @@ def mostrar_grafo():
 
 def mostrar_grafo_circular():
     print("VISUALIZAÇÃO DA REDE DE FORMA: CIRCULAR\n\n")
-    ig.plot(
-        grafo,
-        target=ax,
-        layout="circle",
-        vertex_size=0.1,
-        vertex_color="steelblue",
-        vertex_frame_color="white",
-        vertex_label=grafo.vs["name"])
+    ig.plot( grafo, target=ax, layout="circle", vertex_size=0.1, vertex_color="steelblue", vertex_frame_color="white", vertex_label=grafo.vs["name"], edge_label=grafo.es["weight"])
     plt.show()
 
 
 def mostrar_grafo_kamada_kawai():
     print("VISUALIZAÇÃO DA REDE DE FORMA: KAMADA KAWAI\n\n")
-    ig.plot(
-        grafo,
-        target=ax,
-        layout="kamada_kawai",
-        vertex_size=0.1,
-        vertex_color="steelblue",
-        vertex_frame_color="white",
-        vertex_label=grafo.vs["name"])
+    ig.plot( grafo, target=ax, layout="kamada_kawai", vertex_size=0.1, vertex_color="steelblue", vertex_frame_color="white", vertex_label=grafo.vs["name"], edge_label=grafo.es["weight"])
     plt.show()
 
 
 def mostrar_grafo_tree():
     print("VISUALIZAÇÃO DA REDE DE FORMA: TREE\n\n")
-    ig.plot(
-        grafo,
-        target=ax,
-        layout="tree",
-        vertex_size=0.1,
-        vertex_color="steelblue",
-        vertex_frame_color="white",
-        vertex_label=grafo.vs["name"])
+    ig.plot( grafo, target=ax, layout="tree", vertex_size=0.1, vertex_color="steelblue", vertex_frame_color="white", vertex_label=grafo.vs["name"], edge_label=grafo.es["weight"])
     plt.show()
-
 
 def clear_system():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -102,8 +101,7 @@ while True:
     print("2 - Adicionar conexão")
     print("3 - Propriedades da rede")
     print("4 - Visualizar a rede")
-    print("5 - Importar grafo")
-    print("6 - Sair")
+    print("5 - Sair")
     print("=-=-=-=-=-=-=-=-=-=-=-=-")
     response = int(input("Escolha a opção: > "))
 
@@ -114,12 +112,13 @@ while True:
             adicionar_conexao()
         case 4:
             mostrar_grafo()
-        case 6:
+        case 5:
             exit = True
         case _:
             print("Opção inválida!")
 
     if exit:
+        clear_system()
         break
 
     pause_system()
